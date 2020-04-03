@@ -38,10 +38,6 @@ on ^*:ACTION:*:#: {
     halt
   }
 }
-
-
-on *:START:{
-  server irc.scoutlink.net -j #scandinavia
 }
 
 ; ScanOPS OPscript v1.4 for mIRC
