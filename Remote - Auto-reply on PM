@@ -1,0 +1,15 @@
+;Remote - Auto-reply on Hei
+
+  
+On *:TEXT:Hi:?: {
+  msg $nick Hello $nick . I normally dont reply to private messages. Try to talk in the channel, then more people can join in. Its more interesting.
+}
+On *:TEXT:Hello:?: {
+  msg $nick Hello $nick . I normally dont reply to private messages. Try to talk in the channel, then more people can join in. Its more interesting.
+}
+On *:TEXT:Hei:?: {
+msg $nick Hei $nick . Svarer normalt sett ikke på private meldinger. Prøv å snakke i kanalen istedenfor. Da kan flere speidere bli med i samtalen og det er mer interessant.
+}
+On *:TEXT:Hallo:?: {
+msg $nick Hei $nick . Svarer normalt sett ikke på private meldinger. Prøv å snakke i kanalen istedenfor. Da kan flere speidere bli med i samtalen og det er mer interessant.
+}
