@@ -1,7 +1,7 @@
 ;DENNE LEGGES UNDER TOOLS-->SCRIPT EDITOR (ALT+R) -->Remote
 
 On *:Open:?:*: {
-  msg $nick Hello $nick! I am currently busy and may not reply 
+  msg $nick Hello $nick $+ ! I am currently busy and may not reply 
   msg $nick Due to the ScoutLink rules, I only chat in channels where everyone can participate and operators can overview. 
   msg $nick If you need help, join #help (type: /join #help) - or tell me what you need help with.
   msg $nick If you just want to chat with someone: Use the channels to chat, not private messages (Read https://www.scoutlink.net/rules/) 
