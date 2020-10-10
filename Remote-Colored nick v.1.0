@@ -1,0 +1,29 @@
+;Remote-Colored nick v.1.0
+
+on ^*:TEXT:*:#: {
+  if (!%nickcolour. [ $+ [ $nick ] ]) {
+    while ( !%nickcolour. [ $+ [ $nick ] ] || %nickcolour. [ $+ [ $nick ] ] == 1 || %nickcolour. [ $+ [ $nick ] ] == 2 ) {
+      set %nickcolour. [ $+ [ $nick ] ] $rand(0,15)
+    }
+  } 
+  if ($me !isin $1-) {
+    haltdef
+    echo -t $chan $+(<, $+ %nickcolour. [ $+ [ $nick ] ] $+ ,$iif($regex($nick(#,$nick).pnick,/([~&@%\+])/),$regml(1)),$nick,,>) $1-
+    window -g1 $chan
+    halt
+  }
+}
+on ^*:ACTION:*:#: {
+  if (!%nickcolour. [ $+ [ $nick ] ]) {
+    while ( !%nickcolour. [ $+ [ $nick ] ] || %nickcolour. [ $+ [ $nick ] ] == 1 || %nickcolour. [ $+ [ $nick ] ] == 2 ) {
+      set %nickcolour. [ $+ [ $nick ] ] $rand(0,15)
+    }
+  } 
+  if ($me !isin $1-) {
+    haltdef
+    echo -t $chan $+($chr(42),$chr(0160), $+ %nickcolour. [ $+ [ $nick ] ] $+ ,$iif($regex($nick(#,$nick).pnick,/([~&@%\+])/),$regml(1)),$nick,, ) $1-
+    window -g1 $chan
+    halt
+  }
+}
+
