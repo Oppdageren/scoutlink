@@ -1,6 +1,6 @@
 ;Remote - Auto-reply on open
 
 On *:Open:?:*: {
-  msg $nick Hello $nick ! Due to the ScoutLink rules, I only chat in channels where everyone can participate and operators can overview. If you need help, join #help (type: /join #help) - or tell me what you need help with.
+  msg $nick Hello $nick $+ ! Due to the ScoutLink rules, I only chat in channels where everyone can participate and operators can overview. If you need help, join #help (type: /join #help) - or tell me what you need help with.
   msg $nick If you just want to chat with someone: Use the channels to chat, not private messages (Read https://www.scoutlink.net/rules/) 
 }
