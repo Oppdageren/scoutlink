@@ -13,3 +13,6 @@ msg $nick Hei $nick . Svarer normalt sett ikke på private meldinger. Prøv å s
 On *:TEXT:Hallo:?: {
 msg $nick Hei $nick . Svarer normalt sett ikke på private meldinger. Prøv å snakke i kanalen istedenfor. Da kan flere speidere bli med i samtalen og det er mer interessant.
 }
+On *:TEXT:Hej:?: {
+msg $nick Hei $nick . Svarer normalt sett ikke på private meldinger. Prøv å snakke i kanalen istedenfor. Da kan flere speidere bli med i samtalen og det er mer interessant.
+}
