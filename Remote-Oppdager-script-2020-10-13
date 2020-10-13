@@ -835,12 +835,14 @@ menu nicklist {
   .UK Kill:/kill  $*  - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.jotajoti.info/jampuz/
   .NO Kill:/kill  $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.jotajoti.info/jampuz/
 
-  NickLock
+  Nick
   .NickLock:/nicklock $* $*
   .NickUnLock:/nickunlock $* $*
-  
+  .BadNick EN:/msg $1 Your nick is improper for ScoutLink. Please change it using the command: /nick newnick" where you replace "newnick" with your new nick. Thank you for your understanding
+  .BadNick NO:/msg $1 Ditt nick er upassende for ScoutLink og ber deg om å bytte snarest. Skriv: /nick nyttnick - hvor du bytter "nyttnick" med ditt nye kallenavn. Takk for at du tar hensyn og viser forståelse
+
   END
-  Set End-text in kicks:/set %sluttekst $$?="Set the text which should appear inside the () in the end of your kicks!"
-  Unban:/chanserv unban $$?="Channel:"
+  .Set End-text in kicks:/set %sluttekst $$?="Set the text which should appear inside the () in the end of your kicks!"
+  .Unban:/chanserv unban $$?="Channel:"
 
 }
