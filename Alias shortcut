@@ -1,0 +1,111 @@
+;Alias script laget av Kvikk_lusj
+;v 1.0
+
+;Rules
+/rules /me Reminds people to read Scoutlink rules at https://scoutlink.net/rules
+/regler /say Jeg vil Minne alle på at man bør lese ScoutLink reglene på https://scoutlink.net/rules
+
+;Safety
+/Safety /Say I just want to remind people to read the safety info at https://www.scoutlink.net/safety/
+/sikkerhet /say Jeg vil minne alle på og lese sikkerhets informasjonen på https://www.scoutlink.net/safety/
+
+;WARNINGS
+
+;Swear
+/wswearn /say $1 - Vær vennlig og IKKE bann! (Se http://www.scoutlink.net/rules/)
+/wsweare /say $1 - Please, DO NOT swear in here (See http://www.scoutlink.net/rules/)
+
+;Spam
+/wspamn /say $1 - Vennligst ikke flood/spam! (Sende masse unødvendige meldinger)(Se http://www.scoutlink.net/rules/)
+/wspame /say $1 - Please don't flood/spam the channel with rubbish.
+
+;Caps
+/wcapsn /say $1 - Ikke bruk store bokstaver - det ansees som ROPING!(Se http://www.scoutlink.net/rules/)
+/wcapse /say $1 - Please don't use capital letters - it's considered as SHOUTING and it hurt my ears! (See http://www.scoutlink.net/rules/)
+
+;Dating
+/wdaten /say $1 - ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste (Se http://www.scoutlink.net/rules/)
+/wdatee /say $1 - Scoutlink is scout chat - NOT a dating service. (See http://www.scoutlink.net/rules/)
+
+;Bad nick (PM)
+/wnickn /msg $1 Ditt nick er upassende for ScoutLink og ber deg om å bytte snarest. Skriv: /nick nyttnick - hvor du bytter "nyttnick" med ditt nye kallenavn. Takk for at du tar hensyn og viser forståelse
+/wnicke /msg $1 Your nick is improper for ScoutLink. Please change it using the command/nick newnick .Change newnick with your NEW nick. 
+
+:Wrong channel
+/ww#eng /say $$1 - If you want to write in english, please/part $chan and/join #english
+/ww#int /say $$1 - The only language allowed in $chan is norwegian, danish and swedish. If you want to chat in any other language, please/part $chan and/join #international
+/ww#deu /say $$1 - Wenn du deutsch schreiben möchtest, bitte/part $chan und/join #deutsch
+/ww#esp /say $$1 - Por favor, si quieren hablar en espanol, se pone/part $chan y/join #espanol
+/ww#fra /say $$1 - Pour communiquer en français, veuillez s'il vous plaît tapez/join #francais et/part $chan pour utiliser le canal #francais . Merci!
+/ww#por /say $$1 - Se você quer falar português, por favor digite/part $chan e/join #portuguese
+/ww#ita /say $$1 - Per favore se vuoi parlare italiano, por favore/part $chan ed/join #italiano
+/ww#sca /say $$1 - Hvis du vil skrive på norsk/svensk/dansk, vennligst skriv/part $chan og/join #scandinavia
+/ww#chi /say $$1 - 如果你要说中文请你离开 /part $chan 然后在进入/join #chinese
+/ww#dut /say $$1 - Als je nederlands wilt praten/part $chan en/join #dutch
+
+
+;Other
+/wo /say $1 - $2 $3 $4 $5 $6 $7 $8 $9 $10 (See http://www.scoutlink.net/rules/)
+
+
+;KICK
+
+;Swear
+/kswearn /msg chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen (Se http://www.scoutlink.net/rules/)
+/ksweare /msg chanserv kick $chan $1 No swearing allowed here at scoutlink! (See http://www.scoutlink.net/rules/)
+
+;spam
+/kspamn /msg chanserv kick $chan $1 Ikke flood kanalen (Se http://www.scoutlink.net/rules/)
+/kspame /msg chanserv kick $chan $1 Please don't flood the channel with rubbish. (See http://www.scoutlink.net/rules/)
+
+;Caps
+/kcapsn msg chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING! (Se http://www.scoutlink.net/rules/)
+/kcapse /msg chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING! (See http://www.scoutlink.net/rules/)
+
+;Dating
+/kdaten /msg chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste (Se http://www.scoutlink.net/rules/)
+/kdatee /msg chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service. (See http://www.scoutlink.net/rules/)
+
+;Bad nick
+/knickn /msg chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det! (Se http://www.scoutlink.net/rules/)
+/knicke /msg chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it! (See http://www.scoutlink.net/rules/)
+
+;Wrong channel
+/kw#eng /msg chanserv kick $chan $1 - If you want to write in english, please/join #english
+/kw#int /msg chanserv kick $chan $1 - The only language allowed in $chan is norwegian, danish and swedish. If you want to chat in any other language, please/join #international
+/kw#deu /msg chanserv kick $chan $1 - Wenn du deutsch schreiben möchtest, bitte/join #deutsch
+/kw#esp /msg chanserv kick $chan $1 - Por favor, si quieren hablar en espanol, se pone/join #espanol
+/kw#fra /msg chanserv kick $chan $1 - Pour communiquer en français, veuillez s'il vous plaît tapez/join #francais pour utiliser le canal #francais . Merci!
+/kw#por /msg chanserv kick $chan $1 - Se você quer falar português, por favor digite/join #portuguese
+/kw#ita /msg chanserv kick $chan $1 - Per favore se vuoi parlare italiano, por favore/join #italiano
+/kw#sca /msg chanserv kick $chan $1 - Hvis du vil skrive på Norsk, Dansk eller Svensk, vennligst skriv/join #scandinavia
+/kw#chi /msg chanserv kick $chan $1 - 如果你要说中文请你/join #chinese
+/kw#dut /msg chanserv kick $chan $1 - Als je nederlands wilt praten/join #dutch
+
+;Other
+/ko /msg chanserv kick $chan $1 $2 $3 $4 $5 $6 $7 $8 $9 $10 (Se http://www.scoutlink.net/rules/)
+
+KICKBAN (10m)
+
+;Swear
+/kbswearn /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen (Se http://www.scoutlink.net/rules/)
+/kbsweare /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 No swearing allowed here at scoutlink! (See http://www.scoutlink.net/rules/)
+
+;Spam
+/kbspamn /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Ikke flood kanalen (Se http://www.scoutlink.net/rules/)
+/kbspame /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Please don't flood the channel with rubbish. (See http://www.scoutlink.net/rules/)
+
+;Caps
+/kbcapsn /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING! (Se http://www.scoutlink.net/rules/)
+/kbcapse /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING! (See http://www.scoutlink.net/rules/)
+
+;Dateing
+/kbdaten /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste (Se http://www.scoutlink.net/rules/)
+/kbdatee /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service. (See http://www.scoutlink.net/rules/)
+
+;Badnick
+/kbnickn /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det!
+/kbnicke /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it!
+
+;Other
+/kbo  /ban -u600 $chan $address($1,1) | /msg chanserv kick $chan $1 $2 $3 $4 $5 $6 $7 $8 $9 $10 (See http://www.scoutlink.net/rules/)
