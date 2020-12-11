@@ -1,8 +1,6 @@
 ;Dette er Kvikk_lusj sin remote fil (Vist du finner feil vennligst si ifra :) )
 ; V(1.0)
 
-on *:START: { server b1 | server -m b2 | server -m b3 }
-
 On *:Open:?:*: {
   msg $nick Hello $nick $+ ! I normally dont reply to private messages. Try to talk in the channel, then more people can join in. If you need help, join #help (type: /join #help) - or tell me what you need help with.
   msg $nick If you just want to chat with someone: Use the channels to chat, not private messages (Read https://www.scoutlink.net/rules/) 
