@@ -116,10 +116,10 @@ menu nicklist {
   ..Svensk :/say $1 - Svär inte här.  ( %sluttekstsvek )
   
 .Personal info
-  ..Dansk  :/say $1 - Vær venlig ikke at floode.  ( %sluttekstdkk )
-  ..Engelsk:/say $1 - Please don't flood the channel with rubbish.  ( %sluttekstenk )
-  ..Norsk  :/say $1 - Vennligst ikke flood! (Sende masse unødvendige meldinger)  ( %sluttekstnok )
-  ..Svensk :/say $1 - Översämma inte kanalen med skit ( bara strunt prat)  ( %sluttekstsvek )
+  ..Dansk  :/say $1 - Undgå venligst at dele eller bede om personlige oplysninger (f.eks. E -mail -adresse, fuldt navn, Facebook, Instagram, Snapchat, Skype, skole). Se www.scoutlink.net/rules
+  ..Engelsk:/say $1 - Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/rules
+  ..Norsk  :/say $1 - Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). Se www.scoutlink.net/rules
+  ..Svensk :/say $1 - Undvik att dela eller be om personlig information (t.ex. e -postadress, fullständigt namn, Facebook, Instagram, Snapchat, Skype, skola). Se www.scoutlink.net/rules
   
  .Spamming
   ..Dansk  :/say $1 - Vær venlig ikke at floode.  ( %sluttekstdkk )
