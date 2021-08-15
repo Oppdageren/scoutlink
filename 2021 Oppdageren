@@ -1,0 +1,223 @@
+; OPPDAGEREN SCRIPT V2.0
+; Sist endret: 16.8.21
+
+on ^*:TEXT:*:#: {
+  if (!%nickcolour. [ $+ [ $nick ] ]) {
+    while ( !%nickcolour. [ $+ [ $nick ] ] || %nickcolour. [ $+ [ $nick ] ] == 1 || %nickcolour. [ $+ [ $nick ] ] == 2 ) {
+      set %nickcolour. [ $+ [ $nick ] ] $rand(0,15)
+    }
+  } 
+  if ($me !isin $1-) {
+    haltdef
+    echo -t $chan $+(<, $+ %nickcolour. [ $+ [ $nick ] ] $+ ,$iif($regex($nick(#,$nick).pnick,/([~&@%\+])/),$regml(1)),$nick,,>) $1-
+    window -g1 $chan
+    halt
+  }
+}
+on ^*:ACTION:*:#: {
+  if (!%nickcolour. [ $+ [ $nick ] ]) {
+    while ( !%nickcolour. [ $+ [ $nick ] ] || %nickcolour. [ $+ [ $nick ] ] == 1 || %nickcolour. [ $+ [ $nick ] ] == 2 ) {
+      set %nickcolour. [ $+ [ $nick ] ] $rand(3,13)
+    }
+  } 
+  if ($me !isin $1-) {
+    haltdef
+    echo -t $chan $+($chr(42),$chr(0160), $+ %nickcolour. [ $+ [ $nick ] ] $+ ,$iif($regex($nick(#,$nick).pnick,/([~&@%\+])/),$regml(1)),$nick,, ) $1-
+    window -g1 $chan
+    halt
+  }
+}
+
+;-----------------------------------------------------
+
+; IRCOp SL Scandinavia 2021 V1.0
+
+menu nicklist {
+  IRCOP
+  .Admin:/mode $chan +a $1
+  .De-admin:/mode $chan -a $1
+  .Op:/mode $chan +o $1
+  .Deop :/Mode $chan -o $1  
+  .Voice :/mode $chan +v $1
+  .Voice :/msg chanserv VOICE $chan $1
+  .Devoice :/mode $chan -v $1
+  .Log in
+  ..Login :/oper $$?="passord og brukernavn"
+  ..Log out :/mode $nick -o
+  USER
+  .Whois :/Whois $1
+  .Userip :/userip $1
+  .Check:/check $mask($$1,2)
+  .Ctcp
+  ..Version :/ctcp $1 Version
+  ..Tid :/ctcp $1 time
+  ..Ping :/ctcp $1 Ping
+  ..Custom :/ctcp $1 $$?="ctcp"
+  .SAJoin:/sajoin $* $$?="Move to:"
+  .SAPart:/sapart $* # Moved by $me
+  .Sanick:/sanick $1 $$?="Nytt brukernavn"
+  .Nlock:/nicklock $1 $$?="Nytt brukernavn"
+  .Un-Nlock://nickunlock $1 
+  .NS sendpass :/nickserv sendpass $1
+  CHANNEL
+  .Melding
+  ..AME:/ame $$?="Melding til alle kanalene du er på"
+  ..GLOBAL:/global $$?="Melding til alle brukere på SL"
+  .Chanreg
+  ..Registrer:/msg chanserv register $chan
+  ..Drop:/msg chanserv drop $chan
+  .Chanflags
+  ..Invite
+  ...Invite:/mode $chan +i
+  ...Remove:/mode $chan -i
+  ..Flood 4-3
+  ...Flood 4-3:/mode $chan +f 4:3
+  ...Flood 5-2:/mode $chan +f 5:2
+  ...Remove:/mode $chan -f
+  ..Set password
+  ...Set password:/mode $chan +k $$?="Ønsket passord"
+  ...Remove:/mode $chan -k
+  ..Secret
+  ...Secret:/mode $chan +s
+  ...Remove:/mode $chan -s
+  ..Userlimit
+  ...40:/mode $chan +l 40
+  ...60:/mode $chan +l 60
+  ...80:/mode $chan +l 80
+  ...100:/mode $chan +l 100
+  ...Remove:/mode $chan -l
+  ..Moderated
+  ...Moderated:/mode $chan +m
+  ...Remove:/mode $chan -m
+  ..No nickchange
+  ...No nickchange allowed:/mode $chan +N
+  ...Remove:/mode $chan -N
+  ...redigere flags:/msg chanserv flags $chan $1  $$?="Skriv inn hvilke flag du vil legge til (Husk + eller - først)"
+  ..Getkey:/msg chanserv Getkey $$?="Hvilken kanal"
+  ..Chaninfo:/msg chanserv info $chan
+  ..Topic
+  ...Topic lock off:/msg chanserv set $chan topiclock off
+  ...Topic lock on:/msg chanserv set $chan topiclock on
+  ...Change topic :/msg chanserv topic $chan $$?="Hva vil du at topicen skal være"
+}
+
+; IRCOp SL Scandinavia 2021 V1.0
+menu nicklist {
+  Aktiviser
+  .Aktivitet:/say $* , hva synes du er den aller artigste speideraktiviteten?
+  .Tur:/say $* , når var du sist på speidertur? :)
+  .Mat:/say $* , hva er din favorittmat?
+  .Turmat:/say $* , hva er det beste du har smakt som du har laget på bål?
+  .Merke:/say $* , hvilket aktivitetsmerke er ditt favorittmerke?
+  .Lek:/say $* , hvilken lek er din favorittlek i speideren?
+  .Jobb:/say $* , hva har du lyst å jobbe med når du blir stor?
+  .Leir:/say $* , har du vært på noen speiderleirer? Hva er det beste med å være på leir?
+  Engage
+  .Activity:/say $* , what is your favourite Scouting activity? Mines are camp fire and geocaching!
+  .Camping:/say $* , when did you last go camping? :)
+  .Food:/say $* , what is your favourite food?
+  .Badge:/say $* , what is your favourite Scout badge? Mine is campfire cooking
+  .Games:/say $* , what is your favourite game to play at Scouts?
+  .Job:/say $* , what job do you want to do when you're older?
+
+  Swear
+  .UK Warn:/say $* - Please avoid using offensive language and/or swearing while on ScoutLink. See www.scoutlink.net/rules!
+  .NO Warn:/say $* - Vennligst ikke bruk aggresivt, ufint eller stygt språk. Banning er heller ikke tillatt på ScoutLink. Se www.scoutlink.net/rules!
+  .UK Kick:/kick # $* Offensive language and/or swearing. See www.scoutlink.net/rules
+  .NO Kick:/kick # $* Vennligst oppfør deg. Stygt språk og/eller banning er ikke greit! Se www.scoutlink.net/rules
+  .UK Kill:/kill  $* Offensive language and/or swearing. See www.scoutlink.net/rules
+  .NO Kill:/kill  $* Vennligst oppfør deg. Stygt språk og/eller banning er ikke greit! Se www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+  Troll
+  .UK Warn:/say $* - Please behave as a scout - not as a troll! See www.scoutlink.net/rules
+  .NO Warn:/say $* - Vennligst oppfør deg som en speider og ikke som et troll! Se www.scoutlink.net/rules!
+  .Kick:/kick # $* Oppfør deg som en speider - ikke som et troll! Se www.scoutlink.net/rules
+  .Kill:/kill $* Oppfør deg som en speider - ikke som et troll! Se www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m : Oppfør deg som en speider - ikke som et troll! See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m : Oppfør deg som en speider - ikke som et troll! See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d : Trolling!. See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" :Trolling. See www.scoutlink.net/banned for information and appeals.. Banned by $me for $! 
+
+  Flood
+  .UK Warn:/say $* - Please avoid flooding/spamming the channel. See www.scoutlink.net/rules
+  .NO Warn:/say $* - Vennligst ikke skriv tull (spam) eller mange gjentakelser etter hverandre (flood). Se www.scoutlink.net/rules!
+  .Kick:/kick # $* Flooding/Spamming. See www.scoutlink.net/rules
+  .Kill:/kill $* Flooding/Spamming. See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" :Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+  Personal Info
+  .UK Warn:/say $* - Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/rules
+  .NO Warn:/say $* - Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, instagram, Snapchat, Skype og så videre). Se www.scoutlink.net/rules
+  .UK Kick:/kick # $* Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/rules
+  .NO Kick:/kick # $* Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). Se www.scoutlink.net/rules
+  .Kill:/kill $* Sharing/asking for personal information (e.g. email address, full name, Facebook, Instagram, skype, school) See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m :Sharing/asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m :Sharing/asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d :Sharing/asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" :Sharing/asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+
+  Caps lock
+  .EN Warn/say $1 - Please don't use capital letters - it's considered as SHOUTING and it hurt my ears!
+  .NO Warn:/say $1 - Ikke bruk store bokstaver - det ansees som ROPING!
+  .EN Kick:/msg chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING! See www.scoutlink.net/rules!
+  .NO Kick:/msg chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING! Se www.scoutlink.net/rules!
+  .EN Kill:/kill $1 Don't use capital letters! -  it's considered as SHOUTING! See www.scoutlink.net/rules!
+  .NO Kill:/kill $1 Ikke bruk store bokstaver! Det regnes som ROPING! Se www.scoutlink.net/rules!
+
+  Dating
+  .UK Warn:/say $1 - Scoutlink is scout chat - NOT a dating service. See www.scoutlink.net/rules!
+  .NO Warn:/say $1 - ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste. Se www.scoutlink.net/rules!
+  .UK Kick:/msg chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service. See www.scoutlink.net/rules!
+  .NO Kick:/msg chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste. Se www.scoutlink.net/rules!
+  .EN Kill:/kill $1 Scoutlink is scout chat - NOT a dating service. See www.scoutlink.net/rules!
+  .NO Kill:/kill $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste. Se www.scoutlink.net/rules!
+
+  Nick (PM)
+  .UK Warn:/msg $1 Your nick is improper for ScoutLink. Please change it using the command /nick newnick where you replace "newnick" with a more proper nick. See www.scoutlink.net/rules!
+  .NO Warn:/msg $1 Ditt nick er upassende for ScoutLink. Vil du vennligst bytte nicket med kommandoen /nick nyttnick hvor du bytter ut "nyttnick" med ditt NYE nick. Se www.scoutlink.net/rules!
+  .UK Kick:/msg chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it! See www.scoutlink.net/rules!
+  .NO Kick:/msg chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det! Se www.scoutlink.net/rules!
+  .EN Kill:/kill $1 Your nick is improper for ScoutLink. Please change it!  See www.scoutlink.net/rules!
+  .NO Kill:/kill $1 Ditt nick er upassende. Vennligst skift det! Se www.scoutlink.net/rules!
+
+  Other
+  .Warn:/say $* - $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Kick:/kick # $* $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Kill:/kill # $* $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+
+  Language
+  .UK Warn:/say $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. Type /list to see alternatives.
+  .NO Warn:/say $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+  .UK Kick:/kick # $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. 
+  .NO Kick:/kick # $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+  .UK Kill:/kill  $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. 
+  .NO Kill:/kill  $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+
+  JID
+  .UK Warn:/say $* - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.jotajoti.info/jampuz/
+  .NO Warn:/say $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.jotajoti.info/jampuz/
+  .UK Kick:/kick # $* - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.jotajoti.info/jampuz/   
+  .NO Kick:/kick # $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.jotajoti.info/jampuz/
+  .UK Kill:/kill  $*  - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.jotajoti.info/jampuz/
+  .NO Kill:/kill  $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.jotajoti.info/jampuz/
+
+  Wrong chan
+  .#english:/chanserv kick $chan $1 - If you want to write in English, please /part $chan and /join #english.
+  .#espanol:/chanserv kick $chan $1 - Por favor, si quieren hablar en espanol, se pone/part $chan y /join #espanol.
+  .#francais:/chanserv kick $chan $1 - Pour communiquer en français, veuillez s'il vous plaît tapez /join #francais et /part $chan pour utiliser le canal #francais . Merci!
+  .#german:/chanserv kick $chan $1 - Wenn du deutsch schreiben möchtest, bitte /part $chan und /join #deutsch
+  .#portuguese:/chanserv kick $chan $1 - Se você quer falar português, por favor digite /part $chan e /join #portuguese
+  .#italiano:/chanserv kick $chan $1 - Per favore se vuoi parlare italiano, por favore /part $chan ed /join #italiano
+  .#chinese:/chanserv kick $chan $1 - 如果你要说中文请你离开 /part $chan 然后在进入 /join #chinese
+  .Nederlandsk:/chanserv kick $chan $1 - Als je nederlands wilt praten /part $chan en /join #dutch
+  .#international:/chanserv kick $chan $1 - The only languages allowed in $chan is norwegian, danish and swedish. If you want to chat in any other language, please/part $chan and/join #international
+  .OtherReason:/set %aarsak $$?="Reason:" | /chanserv kick $chan $1 %aarsak ( %sluttekst )
+}
