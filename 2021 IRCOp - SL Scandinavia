@@ -2,7 +2,7 @@
 
 menu nicklist {
   IRCOP
-  .OP
+ .OP
   ..Admin:/mode $chan +a $1
   ..De-admin:/mode $chan -a $1
   ..Op:/mode $chan +o $1
@@ -13,8 +13,7 @@ menu nicklist {
   .Log in
   ..Login :/oper $$?="passord og brukernavn"
   ..Log out :/mode $nick -o
-    USER
-  .Info
+ .USER
   ..Whois :/Whois $1
   ..Userip :/userip $1
   ..Check:/check $mask($$1,2)
@@ -23,10 +22,52 @@ menu nicklist {
   ...Tid :/ctcp $1 time
   ...Ping :/ctcp $1 Ping
   ...Custom :/ctcp $1 $$?="ctcp"
-  .SAJoin:/sajoin $* $$?="Move to:"
-  .SAPart:/sapart $* # Moved by $me
-  .Sanick :/sanick $1 $$?="Nytt brukernavn"
-  .NS sendpass :/nickserv sendpass $1
+  ..SAJoin:/sajoin $* $$?="Move to:"
+  ..SAPart:/sapart $* # Moved by $me
+  ..Sanick:/sanick $1 $$?="Nytt brukernavn"
+  ..Nlock:/nicklock $1 $$?="Nytt brukernavn"
+  .Un-Nlock://nickunlock $1 
+  ..NS sendpass :/nickserv sendpass $1
+ .CHANNEL
+ ..Melding
+ ...AME:/ame $$?="Melding til alle kanalene du er på"
+ ...GLOBAL:/global $$?="Melding til alle brukere på SL"
+  ..Chanreg
+  ...Registrer:/msg chanserv register $chan
+  ...Drop:/msg chanserv drop $chan
+  ..Chanflags
+  ...Invite
+  ....Invite:/mode $chan +i
+  ....Remove:/mode $chan -i
+  ...Flood 4:3
+  ...Flood 4:3:/mode $chan +f 4:3
+  ...Flood 5:2:/mode $chan +f 5:2
+  ....Remove:/mode $chan -f
+  ...Set password
+  ....Set password:/mode $chan +k $$?="Ønsket passord"
+  ....Remove:/mode $chan -k
+  ...Secret
+  ....Secret:/mode $chan +s
+  ....Remove:/mode $chan -s
+  ...Userlimit
+  ....40:/mode $chan +l 40
+  ....60:/mode $chan +l 60
+  ....80:/mode $chan +l 80
+  ....100:/mode $chan +l 100
+  ....Remove:/mode $chan -l
+  ...Moderated
+  ....Moderated:/mode $chan +m
+  ....Remove:/mode $chan -m
+  ...No nickchange
+  ....No nickchange allowed:/mode $chan +N
+  ....Remove:/mode $chan -N
+  ....redigere flags:/msg chanserv flags $chan $1  $$?="Skriv inn hvilke flag du vil legge til (Husk + eller - først)"
+  ..Getkey:/msg chanserv Getkey $$?="Hvilken kanal"
+  ..Info:/msg chanserv info $chan
+  ..topic
+  ...topic lock off:/msg chanserv set $chan topiclock off
+  ...topic lock on:/msg chanserv set $chan topiclock on
+  ...Change topic :/msg chanserv topic $chan $$?="Hva vil du at topicen skal være"
 }
 
 
@@ -257,9 +298,8 @@ Kill
   .Annen grunn :/Kill $1 $$?="Grunn?" (%sluttekstenk)
 
   Gline
-  
-    .Gline :/gline $$?="ident@host/ip" $$?="Tid (1s 2m 3h 4d 5y)" $$?="Begrunnelse"
-    .Gline (*!ident@host)
+  .Gline :/gline $$?="ident@host/ip" $$?="Tid (1s 2m 3h 4d 5y)" $$?="Begrunnelse"
+  .Gline (*!ident@host)
   ..Swearing:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,1) %glinetid :Swearing in $chan | Set by $me
   ..Flooding:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,1) %glinetid :Flooding in $chan | Set by $me
   ..Other:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /set %aarsak $$?="Reason:" | /gline $address($1,1) %glinetid : %aarsak | Set by $me
@@ -268,8 +308,7 @@ Kill
   ..Flooding:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,4) %glinetid :Flooding in $chan | Set by $me
   ..Other:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /set %aarsak $$?="Reason:" | /gline $address($1,7) %glinetid : %aarsak | Set by $me
 
-  .Fjern :/gline $$?="ident@host?"
-  .Remove:/ungline $$?="Host:"
+  .Remove :/gline $$?="ident@host?"
   .List:/stats G
 
 
