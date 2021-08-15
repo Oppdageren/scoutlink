@@ -1,1 +1,77 @@
 ; IRCOp SL Scandinavia 2021 V1.0
+menu nicklist {
+Kill
+.Banning
+  ..Dansk :/kill $1 Det er ikke tilladt at bande her på scoutlink!  ( %sluttekstdkk )
+  ..Engelsk:/kill $1 No swearing allowed here at scoutlink!  ( %sluttekstenk )
+  ..Norsk:/kill $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnok )
+  ..Svensk :/kill $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
+
+  .Spamming
+  ..Dansk :/kill $1 Vær venlig ikke at floode i kanalen  ( %sluttekstdkk )
+  ..Engelsk:/kill $1 Please don't flood the channel with rubbish.  ( %sluttekstenk )
+  ..Norsk  :/kill $1 Ikke flood kanalen  ( %sluttekstnok )
+  ..Svensk :/kill $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsvek )
+
+  .CapsLock
+  ..Dansk :/kill $1 Vær venlig ikke at benytte store bogstaver! Det betegnes som råben!  ( %sluttekstdkk )
+  ..Engelsk :/kill $1 Don't use capital letters! -  it's considered as SHOUTING!  ( %sluttekstenk )
+  ..Norsk  :/kill $1 Ikke bruk store bokstaver! Det regnes som ROPING!  ( %sluttekstnok )
+  ..Svensk :/kill $1 Använd inte stora bokstäver det anses som att skrika  ( %sluttekstsvek )
+
+  .Dating
+  ..Dansk :/kill $1 Scoutlink er en spejderchat - IKKE en dating service.  ( %sluttekstdkk )
+  ..Engelsk:/kill $1 Scoutlink is scout chat - NOT a dating service.  ( %sluttekstenk )
+  ..Norsk  :/kill $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste  ( %sluttekstnok )
+  ..Svensk :/kill $1 Scoutlink är en scout chat inte ett ställe att "datea" på!  ( %sluttekstsvek )
+
+  .Stygt nick
+  ..Dansk :/kill $1 Dit nick er upassende for Scoutlink. Venligst skift det!  ( %sluttekstdkk )
+  ..Engelsk:/kill $1 Your nick is improper for ScoutLink. Please change it!  ( %sluttekstenk )
+  ..Norsk  :/kill $1 Ditt nick er upassende. Vennligst skift det!  ( %sluttekstnok )
+  ..Svensk :/kill $1 Ditt nick är opassande för ScoutLink. Vill du vänlien byta det!  ( %sluttekstsvek )
+  .Annen grunn :/Kill $1 $$?="Grunn?" (%sluttekstenk)
+
+  Gline
+    .Fjern :/gline $$?="ident@host?"
+    .Gline :/gline $$?="ident@host/ip" $$?="Tid (1s 2m 3h 4d 5y)" $$?="Begrunnelse"
+
+    
+Oper
+    .Login :/oper $$?="passord og brukernavn"
+    .Log ut :/mode $nick -o
+    .Info
+    ..Whois :/Whois $1
+    ..Userip :/userip $1
+    ..Ctcp
+    ...Version :/ctcp $1 Version
+    ...Tid :/ctcp $1 time
+    ...Ping :/ctcp $1 Ping
+    ...Custom :/ctcp $1 $$?="ctcp"
+    ..Ns info :/ns info $1
+    ..Stats
+    ...Gline :/stats g
+    ...Oline :/stats o
+    ...qline :/stats q
+    ...IRCOP :/stats P
+    ..Check
+    ...Check host :/Check $address($1,7)
+    ...Check ip :/check $$?="ip"
+    .User
+    ..Sajoin :/sajoin $$?="1" $chan
+    ..Sapart :/Sapart $1 $chan $$?="Begrunnelse"
+    ..Sanick :/sanick $1 $$?="Nytt brukernavn"
+    ..NS sendpass :/nickserv sendpass $1
+    .Cs
+    ..Registrer :/msg chanserv register $chan
+    ..Drop :/msg chanserv drop $chan
+    ..redigere flags :/msg chanserv flags $chan $1  $$?="Skriv inn hvilke flag du vil legge til (Husk + eller - først)"
+    ..Getkey :/msg chanserv Getkey $$?="Hvilken kanal"
+    ..Info :/msg chanserv info $chan
+    ..topic
+    ...topic lock av :/msg chanserv set $chan topiclock off
+    ...topic lock på :/msg chanserv set $chan topiclock on
+    ...endre topic :/msg chanserv topic $chan $$?="Hva vil du at topicen skal være"
+}
+
+
