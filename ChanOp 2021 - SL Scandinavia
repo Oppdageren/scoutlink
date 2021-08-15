@@ -10,20 +10,40 @@ menu nicklist {
 
 menu nicklist {
   Aktiviser
-  .NO Aktivitet:/say $*, hva synes du er den aller artigste speideraktiviteten?
-  .NO Tur:/say $*, når var du sist på speidertur? :)
-  .NO Mat:/say $*, hva er din favorittmat?
-  .NO Turmat:/say $*, hva er det beste du har smakt som du har laget på bål?
-  .NO Merke:/say $*, hvilket aktivitetsmerke er ditt favorittmerke?
-  .NO Lek:/say $*, hvilken lek er din favorittlek i speideren?
-  .NO Jobb:/say $*, hva har du lyst å jobbe med når du blir stor?
-  .NO Leir:/say $*, har du vært på noen speiderleirer? Hva er det beste med å være på leir?
-  .EN Activity:/say $*, what is your favourite Scouting activity?
-  .EN Camping:/say $*, when did you last go camping? :)
-  .EN Food:/say $*, what is your favourite food?
-  .EN Badge:/say $*, what is your favourite Scout badge? Mine is campfire cooking
-  .EN Games:/say $*, what is your favourite game to play at Scouts?
-  .EN Job:/say $*, what job do you want to do when you're older?
+  .DA
+  ..Aktivitet:/say $*, hvad synes du er den sjoveste spejderaktivitet?
+  ..Tur:/say $*, hvornår var sidste gang du var på spejderrejse? :)
+  ..Mad:/say $*, hvad er din yndlingsmad?
+  ..Turmad:/say $*, hvad er det bedste du har smagt, som du har lavet på et bål?
+  ..Mærke:/say $*, hvilket aktivitetsmærke er dit yndlingsmærke?
+  ..Spil:/say $*, hvilket spil er dit yndlingsspil i spejderen?
+  ..Job:/say $*, hvad vil du arbejde med, når du bliver stor?
+  ..Lejr :/say $*, har du været i nogen spejderlejre? Hvad er det bedste ved at være på lejr?
+  .NO
+  ..Aktivitet:/say $*, hva synes du er den aller artigste speideraktiviteten?
+  ..Tur:/say $*, når var du sist på speidertur? :)
+  ..Mat:/say $*, hva er din favorittmat?
+  ..Turmat:/say $*, hva er det beste du har smakt som du har laget på bål?
+  ..Merke:/say $*, hvilket aktivitetsmerke er ditt favorittmerke?
+  ..Lek:/say $*, hvilken lek er din favorittlek i speideren?
+  ..Jobb:/say $*, hva har du lyst å jobbe med når du blir stor?
+  ..Leir:/say $*, har du vært på noen speiderleirer? Hva er det beste med å være på leir?
+  .SE
+  ..Aktivitet:/say $*, vad tycker du är den roligaste scoutaktiviteten?
+  ..Tur:/say $*, när var du sist på scoutresa? :)
+  ..Mat:/say $*, vad är din favoritmat?
+  ..Turmat:/say $*, vad är det bästa du har smakat som du har gjort på en lägereld?
+  ..Märke:/say $*, vilket aktivitetsmärke är ditt favoritmärke?
+  ..Spel:/say $*, vilket spel är ditt favoritspel i scouten?
+  ..Jobb:/say $*, vad vill du jobba med när du blir stor?
+  ..Läger:/say $*, har du varit på några scoutläger? Vad är det bästa med att vara på lägret?
+  .EN
+  ..Activity:/say $*, what is your favourite Scouting activity?
+  ..Camping:/say $*, when did you last go camping? :)
+  ..Food:/say $*, what is your favourite food?
+  ..Badge:/say $*, what is your favourite Scout badge? Mine is campfire cooking
+  ..Games:/say $*, what is your favourite game to play at Scouts?
+  ..Job:/say $*, what job do you want to do when you're older?
   
   Advarsel
   .Banning
