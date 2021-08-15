@@ -1,6 +1,5 @@
 ; ChanOp SL Scandinavia 2021 V.01
 
-}
 menu nicklist {
   Chanop
   .Op :/Mode $chan +o $1
