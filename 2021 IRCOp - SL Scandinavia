@@ -2,20 +2,31 @@
 
 menu nicklist {
   IRCOP
-  .Admin:/mode $chan +a $1
-  .De-admin:/mode $chan -a $1
-  .Op:/mode $chan +a $1
-  .Deop :/Mode $chan -o $1  
-  .Voice :/mode $chan +v $1
-  .Voice :/msg chanserv VOICE $chan $1
-  .Devoice :/mode $chan -v $1
-  .Login :/oper $$?="passord og brukernavn"
-  .Log out :/mode $nick -o
-  
-  USER
-  .Check:/check $mask($$1,2)
-  .Join:/sajoin $* $$?="Move to:"
-  .Part:/sapart $* # Moved by $me
+  .OP
+  ..Admin:/mode $chan +a $1
+  ..De-admin:/mode $chan -a $1
+  ..Op:/mode $chan +o $1
+  ..Deop :/Mode $chan -o $1  
+  ..Voice :/mode $chan +v $1
+  ..Voice :/msg chanserv VOICE $chan $1
+  ..Devoice :/mode $chan -v $1
+  .Log in
+  ..Login :/oper $$?="passord og brukernavn"
+  ..Log out :/mode $nick -o
+    USER
+  .Info
+  ..Whois :/Whois $1
+  ..Userip :/userip $1
+  ..Check:/check $mask($$1,2)
+  ..Ctcp
+  ...Version :/ctcp $1 Version
+  ...Tid :/ctcp $1 time
+  ...Ping :/ctcp $1 Ping
+  ...Custom :/ctcp $1 $$?="ctcp"
+  .SAJoin:/sajoin $* $$?="Move to:"
+  .SAPart:/sapart $* # Moved by $me
+  .Sanick :/sanick $1 $$?="Nytt brukernavn"
+  .NS sendpass :/nickserv sendpass $1
 }
 
 
@@ -246,8 +257,21 @@ Kill
   .Annen grunn :/Kill $1 $$?="Grunn?" (%sluttekstenk)
 
   Gline
-    .Fjern :/gline $$?="ident@host?"
+  
     .Gline :/gline $$?="ident@host/ip" $$?="Tid (1s 2m 3h 4d 5y)" $$?="Begrunnelse"
+    .Gline (*!ident@host)
+  ..Swearing:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,1) %glinetid :Swearing in $chan | Set by $me
+  ..Flooding:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,1) %glinetid :Flooding in $chan | Set by $me
+  ..Other:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /set %aarsak $$?="Reason:" | /gline $address($1,1) %glinetid : %aarsak | Set by $me
+  .Gline (*!*@host)
+  ..Swearing:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,4) %glinetid :Swearing in $chan | Set by $me
+  ..Flooding:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /gline $address($1,4) %glinetid :Flooding in $chan | Set by $me
+  ..Other:/set %glinetid $$?="How long gline? (E.g: 10m or 10h or 10d)" | /set %aarsak $$?="Reason:" | /gline $address($1,7) %glinetid : %aarsak | Set by $me
+
+  .Fjern :/gline $$?="ident@host?"
+  .Remove:/ungline $$?="Host:"
+  .List:/stats G
+
 
     
 Oper
