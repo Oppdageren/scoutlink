@@ -2,7 +2,7 @@
 
 menu nicklist {
   Chanop
-  .Op:/msg chanserv mode $chan +o $1
+  .Op:/msg chanserv OP $chan $1
   .Deop :/Mode $chan -o $1
   .Voice :/Mode $chan +v $1
   .Devoice :/mode $chan -v $1
