@@ -115,7 +115,13 @@ menu nicklist {
   ..Norsk  :/say $1 - Vær vennlig og IKKE bann!  ( %sluttekstnok )
   ..Svensk :/say $1 - Svär inte här.  ( %sluttekstsvek )
   
-  .Spamming
+.Personal info
+  ..Dansk  :/say $1 - Vær venlig ikke at floode.  ( %sluttekstdkk )
+  ..Engelsk:/say $1 - Please don't flood the channel with rubbish.  ( %sluttekstenk )
+  ..Norsk  :/say $1 - Vennligst ikke flood! (Sende masse unødvendige meldinger)  ( %sluttekstnok )
+  ..Svensk :/say $1 - Översämma inte kanalen med skit ( bara strunt prat)  ( %sluttekstsvek )
+  
+ .Spamming
   ..Dansk  :/say $1 - Vær venlig ikke at floode.  ( %sluttekstdkk )
   ..Engelsk:/say $1 - Please don't flood the channel with rubbish.  ( %sluttekstenk )
   ..Norsk  :/say $1 - Vennligst ikke flood! (Sende masse unødvendige meldinger)  ( %sluttekstnok )
@@ -309,42 +315,6 @@ Kill
 
   .Remove :/gline $$?="ident@host?"
   .List:/stats G
-
-
-    
-Oper
-    .Info
-    ..Whois :/Whois $1
-    ..Userip :/userip $1
-    ..Ctcp
-    ...Version :/ctcp $1 Version
-    ...Tid :/ctcp $1 time
-    ...Ping :/ctcp $1 Ping
-    ...Custom :/ctcp $1 $$?="ctcp"
-    ..Ns info :/ns info $1
-    ..Stats
-    ...Gline :/stats g
-    ...Oline :/stats o
-    ...qline :/stats q
-    ...IRCOP :/stats P
-    ..Check
-    ...Check host :/Check $address($1,7)
-    ...Check ip :/check $$?="ip"
-    .User
-    ..Sajoin :/sajoin $$?="1" $chan
-    ..Sapart :/Sapart $1 $chan $$?="Begrunnelse"
-    ..Sanick :/sanick $1 $$?="Nytt brukernavn"
-    ..NS sendpass :/nickserv sendpass $1
-    .Cs
-    ..Registrer :/msg chanserv register $chan
-    ..Drop :/msg chanserv drop $chan
-    ..redigere flags :/msg chanserv flags $chan $1  $$?="Skriv inn hvilke flag du vil legge til (Husk + eller - først)"
-    ..Getkey :/msg chanserv Getkey $$?="Hvilken kanal"
-    ..Info :/msg chanserv info $chan
-    ..topic
-    ...topic lock av :/msg chanserv set $chan topiclock off
-    ...topic lock på :/msg chanserv set $chan topiclock on
-    ...endre topic :/msg chanserv topic $chan $$?="Hva vil du at topicen skal være"
 }
 
 menu nicklist {
