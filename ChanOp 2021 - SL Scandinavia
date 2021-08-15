@@ -4,7 +4,7 @@ menu nicklist {
   Chanop
   .Op:/msg chanserv OP $chan $1
   .Deop :/Mode $chan -o $1
-  .Voice :/Mode $chan +v $1
+  .Voice :/msg chanserv VOICE $chan $1
   .Devoice :/mode $chan -v $1
 }
 
