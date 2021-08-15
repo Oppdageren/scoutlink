@@ -161,16 +161,22 @@ menu nicklist {
   
   Kick
   .Banning
-  ..Dansk :/msg chanserv kick $chan $1 Det er ikke tilladt at bande her på scoutlink!  ( %sluttekstdkk )
+  ..Dansk:/msg chanserv kick $chan $1 Det er ikke tilladt at bande her på scoutlink!  ( %sluttekstdkk )
   ..Engelsk:/msg chanserv kick $chan $1 No swearing allowed here at scoutlink!  ( %sluttekstenk )
   ..Norsk:/msg chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnok )
-  ..Svensk :/msg chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
+  ..Svensk:/msg chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
+  
+  .Personal info
+  ..Dansk:/msg chanserv kick $chan $1 Undgå venligst at dele eller bede om personlige oplysninger (f.eks. E -mail -adresse, fuldt navn, Facebook, Instagram, Snapchat, Skype, skole). Se www.scoutlink.net/rules
+  ..Engelsk:/msg chanserv kick $chan $1 Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/rules
+  ..Norsk:/msg chanserv kick $chan $1 Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). Se www.scoutlink.net/rules
+  ..Svensk:/msg chanserv kick $chan $1 Undvik att dela eller be om personlig information (t.ex. e -postadress, fullständigt namn, Facebook, Instagram, Snapchat, Skype, skola). Se www.scoutlink.net/rules
   
   .Spamming
-  ..Dansk :/msg chanserv kick $chan $1 Vær venlig ikke at floode i kanalen  ( %sluttekstdkk )
+  ..Dansk:/msg chanserv kick $chan $1 Vær venlig ikke at floode i kanalen  ( %sluttekstdkk )
   ..Engelsk:/msg chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenk )
-  ..Norsk  :/msg chanserv kick $chan $1 Ikke flood kanalen  ( %sluttekstnok )
-  ..Svensk :/msg chanserv kick $chan $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsvek )
+  ..Norsk:/msg chanserv kick $chan $1 Ikke flood kanalen  ( %sluttekstnok )
+  ..Svensk:/msg chanserv kick $chan $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsvek )
   
   .CapsLock
   ..Dansk :/msg chanserv kick $chan $1 Vær venlig ikke at benytte store bogstaver! Det betegnes som råben!  ( %sluttekstdkk )
@@ -213,6 +219,12 @@ menu nicklist {
   ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnob )
   ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
   
+  .Personal info
+  ..Dansk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Undgå venligst at dele eller bede om personlige oplysninger (f.eks. E -mail -adresse, fuldt navn, Facebook, Instagram, Snapchat, Skype, skole). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Norsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Svensk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Undvik att dela eller be om personlig information (t.ex. e -postadress, fullständigt namn, Facebook, Instagram, Snapchat, Skype, skola). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  
   ..Flooding
   ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Det er ikke tillad at floode (sige det samme igen og igen)!  ( %sluttekstdkb )
   ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenb )
@@ -245,6 +257,12 @@ menu nicklist {
   ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnob )
   ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsveb )
  
+  .Personal info
+  ..Dansk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Undgå venligst at dele eller bede om personlige oplysninger (f.eks. E -mail -adresse, fuldt navn, Facebook, Instagram, Snapchat, Skype, skole). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Norsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  ..Svensk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Undvik att dela eller be om personlig information (t.ex. e -postadress, fullständigt namn, Facebook, Instagram, Snapchat, Skype, skola). See www.scoutlink.net/banned for information and appeals. Banned by $me for 10 minutes.
+  
  ..Flooding
   ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Det er ikke tillad at floode (sige det samme igen og igen)!  ( %sluttekstdkb )
   ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenb )
@@ -277,6 +295,12 @@ Kill
   ..Norsk:/kill $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnok )
   ..Svensk :/kill $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
 
+ .Personal info
+  ..Dansk:/kill $1 Undgå venligst at dele eller bede om personlige oplysninger (f.eks. E -mail -adresse, fuldt navn, Facebook, Instagram, Snapchat, Skype, skole). Se www.scoutlink.net/rules
+  ..Engelsk:/kill $1 Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, Instagram, Snapchat, Skype, school). See www.scoutlink.net/rules
+  ..Norsk:/kill $1 Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, Instagram, Snapchat, Skype og så videre). Se www.scoutlink.net/rules
+  ..Svensk:/kill $1 Undvik att dela eller be om personlig information (t.ex. e -postadress, fullständigt namn, Facebook, Instagram, Snapchat, Skype, skola). Se www.scoutlink.net/rules
+  
   .Spamming
   ..Dansk :/kill $1 Vær venlig ikke at floode i kanalen  ( %sluttekstdkk )
   ..Engelsk:/kill $1 Please don't flood the channel with rubbish.  ( %sluttekstenk )
