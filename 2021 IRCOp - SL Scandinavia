@@ -10,9 +10,9 @@ menu nicklist {
   ..Voice :/mode $chan +v $1
   ..Voice :/msg chanserv VOICE $chan $1
   ..Devoice :/mode $chan -v $1
-  .Log in
-  ..Login :/oper $$?="passord og brukernavn"
-  ..Log out :/mode $nick -o
+  ..Log in
+  ...Login :/oper $$?="passord og brukernavn"
+  ...Log out :/mode $nick -o
  .USER
   ..Whois :/Whois $1
   ..Userip :/userip $1
