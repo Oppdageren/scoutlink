@@ -2,7 +2,6 @@
 
 menu nicklist {
   IRCOP
-
   .Admin:/mode $chan +a $1
   .De-admin:/mode $chan -a $1
   .Op:/mode $chan +a $1
@@ -252,7 +251,6 @@ Kill
 
     
 Oper
-   
     .Info
     ..Whois :/Whois $1
     ..Userip :/userip $1
