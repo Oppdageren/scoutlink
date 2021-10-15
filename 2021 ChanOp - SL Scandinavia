@@ -1,4 +1,4 @@
-; ChanOp SL Scandinavia 2021 V1.1
+; ChanOp SL Scandinavia 2021 V1.2
 
 menu nicklist {
   Chanop
@@ -203,7 +203,7 @@ menu nicklist {
 }
 menu nicklist {
   Sett slutttekst
-  .Sett slutteskst til standard:/sluttekst /set %sluttekstdkk > Læs vores regler på www.scoutlink.net/rules  | /set %sluttekstdkb For mere information, se www.scoutlink.net/banned | /set %sluttekstnok Les våre regler på www.scoutlink.net/rules | /set %sluttekstnob For mere informasjon, se www.scoutlink.net/banned | /set %sluttekstsvek läs reglerna på www.scoutlink.net/rules | /set %sluttekstsveb för mer information se www.scoutlink.net/banned | /set %sluttekstenk Read our rules at www.scoutlink.net/rules | /set %sluttekstenb For more information go to www.scoutlink.net/banned
+  .Sett slutteskst til standard:/set %sluttekstdkk > Læs vores regler på www.scoutlink.net/rules  | /set %sluttekstdkb For mere information, se www.scoutlink.net/banned | /set %sluttekstnok Les våre regler på www.scoutlink.net/rules | /set %sluttekstnob For mere informasjon, se www.scoutlink.net/banned | /set %sluttekstsvek läs reglerna på www.scoutlink.net/rules | /set %sluttekstsveb för mer information se www.scoutlink.net/banned | /set %sluttekstenk Read our rules at www.scoutlink.net/rules | /set %sluttekstenb For more information go to www.scoutlink.net/banned
   .Sluttekst Dansk
   ..Sett slutttekst Dk kick/advarsel:/set %sluttekstdkk $$?="Sett inn teksten som skal være på slutten av kick/advarsel meldingen"
   ..Sett slutttekst Dk ban:/set %sluttekstdkb $$?="Sett inn teksten som skal være på slutten av ban meldingen"
