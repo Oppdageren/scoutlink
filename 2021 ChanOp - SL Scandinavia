@@ -1,11 +1,11 @@
-; ChanOp SL Scandinavia 2021 V1.2
+; ChanOp SL Scandinavia 2021 V1.3
 
 menu nicklist {
   Chanop
   .Op:/msg chanserv OP $chan $1
-  .Deop :/Mode $chan DEOP $1
+  .Deop:/msg chanserv DEOP $chan $1
   .Voice :/msg chanserv VOICE $chan $1
-  .Devoice :/mode $chan DEVOICE $1
+ .Voice :/msg chanserv DEOICE $chan $1
 }
 
 menu nicklist {
