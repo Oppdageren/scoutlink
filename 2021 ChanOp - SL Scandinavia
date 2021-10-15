@@ -5,7 +5,7 @@ menu nicklist {
   .Op:/msg chanserv OP $chan $1
   .Deop:/msg chanserv DEOP $chan $1
   .Voice :/msg chanserv VOICE $chan $1
- .Voice :/msg chanserv DEOICE $chan $1
+ .Voice :/msg chanserv DEVOICE $chan $1
 }
 
 menu nicklist {
