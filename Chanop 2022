@@ -1,0 +1,219 @@
+; ChanOp SL Scandinavia 2022 V1
+
+menu nicklist {
+  Chanop
+  .Op:/msg chanserv OP $chan $1
+  .Deop:/msg chanserv DEOP $chan $1
+  .Voice :/msg chanserv VOICE $chan $1
+  .Voice :/msg chanserv DEVOICE $chan $1
+}
+
+menu nicklist {
+  Aktiviser
+  .DA
+  ..Aktivitet:/say $*, hvad synes du er den sjoveste spejderaktivitet?
+  ..Tur:/say $*, hvornår var sidste gang du var på spejderrejse? :)
+  ..Mad:/say $*, hvad er din yndlingsmad?
+  ..Turmad:/say $*, hvad er det bedste du har smagt, som du har lavet på et bål?
+  ..Mærke:/say $*, hvilket aktivitetsmærke er dit yndlingsmærke?
+  ..Spil:/say $*, hvilket spil er dit yndlingsspil i spejderen?
+  ..Job:/say $*, hvad vil du arbejde med, når du bliver stor?
+  ..Lejr :/say $*, har du været i nogen spejderlejre? Hvad er det bedste ved at være på lejr?
+  .NO
+  ..Aktivitet:/say $*, hva synes du er den aller artigste speideraktiviteten?
+  ..Tur:/say $*, når var du sist på speidertur? :)
+  ..Mat:/say $*, hva er din favorittmat?
+  ..Turmat:/say $*, hva er det beste du har smakt som du har laget på bål?
+  ..Merke:/say $*, hvilket aktivitetsmerke er ditt favorittmerke?
+  ..Lek:/say $*, hvilken lek er din favorittlek i speideren?
+  ..Jobb:/say $*, hva har du lyst å jobbe med når du blir stor?
+  ..Leir:/say $*, har du vært på noen speiderleirer? Hva er det beste med å være på leir?
+  .SE
+  ..Aktivitet:/say $*, vad tycker du är den roligaste scoutaktiviteten?
+  ..Tur:/say $*, när var du sist på scoutresa? :)
+  ..Mat:/say $*, vad är din favoritmat?
+  ..Turmat:/say $*, vad är det bästa du har smakat som du har gjort på en lägereld?
+  ..Märke:/say $*, vilket aktivitetsmärke är ditt favoritmärke?
+  ..Spel:/say $*, vilket spel är ditt favoritspel i scouten?
+  ..Jobb:/say $*, vad vill du jobba med när du blir stor?
+  ..Läger:/say $*, har du varit på några scoutläger? Vad är det bästa med att vara på lägret?
+  .EN
+  ..Activity:/say $*, what is your favourite Scouting activity?
+  ..Camping:/say $*, when did you last go camping? :)
+  ..Food:/say $*, what is your favourite food?
+  ..Badge:/say $*, what is your favourite Scout badge? Mine is campfire cooking
+  ..Games:/say $*, what is your favourite game to play at Scouts?
+  ..Job:/say $*, what job do you want to do when you're older?
+
+  Advarsel
+  .Banning
+  ..Dansk  :/say $1 - Vær venlig at lade vær' med at bande. ( %sluttekstdkk )
+  ..Engelsk:/say $1 - Please, DO NOT swear in here.  ( %sluttekstenk )
+  ..Norsk  :/say $1 - Vær vennlig og IKKE bann!  ( %sluttekstnok )
+  ..Svensk :/say $1 - Svär inte här.  ( %sluttekstsvek )
+
+  .Spamming
+  ..Dansk  :/say $1 - Vær venlig ikke at floode.  ( %sluttekstdkk )
+  ..Engelsk:/say $1 - Please don't flood the channel with rubbish.  ( %sluttekstenk )
+  ..Norsk  :/say $1 - Vennligst ikke flood! (Sende masse unødvendige meldinger)  ( %sluttekstnok )
+  ..Svensk :/say $1 - Översämma inte kanalen med skit ( bara strunt prat)  ( %sluttekstsvek )
+
+  .Capslock
+  ..Dansk  :/say $1 - Brug ikke store bogstaver! - det er som at RÅBE!  ( %sluttekstdkk )
+  ..Engelsk:/say $1 - Please don't use capital letters - it's considered as SHOUTING and it hurt my ears!  ( %sluttekstenk )
+  ..Norsk  :/say $1 - Ikke bruk store bokstaver - det ansees som ROPING!  ( %sluttekstnok )
+  ..Svensk :/say $1 - Använd inte stora boksäver detta anses som att skrika och det gör ont i mina örnon  ( %sluttekstsvek )
+
+  .Dating
+  ..Dansk  :/say $1 - Scoutlink er en spejder chat - IKKE et sted til at finde en ny kæreste.  ( %sluttekstdkk )
+  ..Engelsk:/say $1 - Scoutlink is scout chat - NOT a dating service.  ( %sluttekstenk )
+  ..Norsk  :/say $1 - ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste  ( %sluttekstnok )
+  ..Svensk :/say $1 - Scoutlink är en scout chat inte ett ställe att "datea" på!  ( %sluttekstsvek )
+
+  .Stygt Nick(PM)
+  ..Dansk  :/msg $1 Dit nick er upassende for ScoutLink. Venligst skift nick med kommandoen/nick nytnick. Skift nytnick med dit NYE nick.  ( %sluttekstdkk )
+  ..Engelsk:/msg $1 Your nick is improper for ScoutLink. Please change it using the command/nick newnick .Change newnick with your NEW nick.  ( %sluttekstenk )
+  ..Norsk  :/msg $1 Ditt nick er upassende for ScoutLink. Vil du vennligst bytte nicket med kommandoen/nick nyttnick hvor du bytter ut nyttnick med ditt NYE nick.  ( %sluttekstnok )
+  ..Svensk :/msg $1 Ditt nick är opassande för ScoutLink. Vill du vänlien byta ditt nick med kommandona/nick nyttnick där du byter ut nyttnick med ditt NYA nick.  ( %sluttekstsvek )
+
+  .Feil kanal
+  ..#english:/say $$1 - If you want to write in english, please /part $chan and/join #english
+  ..#espanol:/say $$1 - Por favor, si quieren hablar en espanol, se pone /part $chan y /join #espanol
+  ..#francais:/say $$1 - Pour communiquer en français, veuillez s'il vous plaît tapez /join #francais et/part $chan pour utiliser le canal #francais . Merci!
+  ..#german:/say $$1 - Wenn du deutsch schreiben möchtest, bitte /part $chan und/join #deutsch
+  ..#portuguese:/say $$1 - Se você quer falar português, por favor digite /part $chan e /join #portuguese
+  ..#italiano:/say $$1 - Per favore se vuoi parlare italiano, por favore /part $chan ed /join #italiano
+  ..#scandinavia-dk:/say $$1 - Hvis du vil skrive på dansk, venligst skriv /part $chan og /join #scandinavia
+  ..#scandinavia-no:/say $$1 - Hvis du vil skrive på norsk, vennligst skriv /part $chan og /join #scandinavia
+  ..#scandinavia-se:/say $$1 - Om du vill prata svenska, vänligen skriv /part $chan og /join #scandinavia
+  ..#chinese:/say $$1 - 如果你要说中文请你离开 /part $chan 然后在进入 /join #chinese
+  ..#nederlandsk:/say $$1 - Als je nederlands wilt praten /part $chan en /join #dutch
+  ..#international:/say $$1 - The only languages allowed in $chan is norwegian, danish and swedish. If you want to chat in any other languages, please /part $chan and /join #international
+
+  Kick
+  .Banning
+  ..Dansk :/msg chanserv kick $chan $1 Det er ikke tilladt at bande her på scoutlink!  ( %sluttekstdkk )
+  ..Engelsk:/msg chanserv kick $chan $1 No swearing allowed here at scoutlink!  ( %sluttekstenk )
+  ..Norsk:/msg chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnok )
+  ..Svensk :/msg chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
+
+  .Spamming
+  ..Dansk :/msg chanserv kick $chan $1 Vær venlig ikke at floode i kanalen  ( %sluttekstdkk )
+  ..Engelsk:/msg chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenk )
+  ..Norsk  :/msg chanserv kick $chan $1 Ikke flood kanalen  ( %sluttekstnok )
+  ..Svensk :/msg chanserv kick $chan $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsvek )
+
+  .CapsLock
+  ..Dansk :/msg chanserv kick $chan $1 Vær venlig ikke at benytte store bogstaver! Det betegnes som råben!  ( %sluttekstdkk )
+  ..Engelsk :/msg chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING!  ( %sluttekstenk )
+  ..Norsk  :/msg chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING!  ( %sluttekstnok )
+  ..Svensk :/msg chanserv kick $chan $1 Använd inte stora bokstäver det anses som att skrika  ( %sluttekstsvek )
+
+  .Dating
+  ..Dansk :/msg chanserv kick $chan $1 Scoutlink er en spejderchat - IKKE en dating service.  ( %sluttekstdkk )
+  ..Engelsk:/msg chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service.  ( %sluttekstenk )
+  ..Norsk  :/msg chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste  ( %sluttekstnok )
+  ..Svensk :/msg chanserv kick $chan $1 Scoutlink är en scout chat inte ett ställe att "datea" på!  ( %sluttekstsvek )
+
+  .Stygt nick
+  ..Dansk :/msg chanserv kick $chan $1 Dit nick er upassende for Scoutlink. Venligst skift det!  ( %sluttekstdkk )
+  ..Engelsk:/msg chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it!  ( %sluttekstenk )
+  ..Norsk  :/msg chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det!  ( %sluttekstnok )
+  ..Svensk :/msg chanserv kick $chan $1 Ditt nick är opassande för ScoutLink. Vill du vänlien byta det!  ( %sluttekstsvek )
+
+  .Feil kanal
+  ..#english:/msg chanserv kick $chan $1 - If you want to write in english, please/join #english
+  ..#espanol:/msg chanserv kick $chan $1 - Por favor, si quieren hablar en espanol, se pone/join #espanol
+  ..#francais:/msg chanserv kick $chan $1 - Pour communiquer en français, veuillez s'il vous plaît tapez/join #francais pour utiliser le canal #francais . Merci!
+  ..Tysk:/msg chanserv kick $chan $1 - Wenn du deutsch schreiben möchtest, bitte/join #deutsch
+  ..#portuguese:/msg chanserv kick $chan $1 - Se você quer falar português, por favor digite/join #portuguese
+  ..#italiano:/msg chanserv kick $chan $1 - Per favore se vuoi parlare italiano, por favore/join #italiano
+  ..#scandinavia-dk:/msg chanserv kick $chan $1 - Hvis du vil skrive på dansk, venligst skriv/join #scandinavia
+  ..#scandinavia-no:/msg chanserv kick $chan $1 - Hvis du vil skrive på norsk, vennligst skriv/join #scandinavia
+  ..#scandinavia-se:/msg chanserv kick $chan $1 - Om du vill prata svenska, vänligen skriv/join #scandinavia
+  ..#chinese:/msg chanserv kick $chan $1 - 如果你要说中文请你/join #chinese
+  ..Nederlandsk:/msg chanserv kick $chan $1 - Als je nederlands wilt praten/join #dutch
+  ..#international:/msg chanserv kick $chan $1 - The only language allowed in $chan is norwegian, danish and swedish. If you want to chat in any other language, please/join #international
+  .OtherReason:/msg chanserv kick $chan $1 $$?="Grunnen for kick" - See "/rules" to see the rules
+
+  KickBan (10m)
+  .KickBan (*!ident@host)
+  ..Swearing
+  ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Det er ikke tilladt at bande på Scoutlink!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 No swearing allowed here at scoutlink!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsvek )
+
+  ..Flooding
+  ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Det er ikke tillad at floode (sige det samme igen og igen)!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ikke flood kanalen  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsvek )
+
+  ..CapsLock
+  ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Brug ikke store bogstaver! - det er som at RÅBE!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING!  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Använd inte stora bokstäver det anses som att skrika  ( %sluttekstsveb )
+
+  ..Dating
+  ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Scoutlink er en spejder chat - IKKE et sted til at finde en ny kæreste.  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service.  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Scoutlink är en scout chat inte ett ställe att "datea" på!  ( %sluttekstsveb )
+
+  ..BadNick
+  ...Dansk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Dit nick er upassende. Venligst skift det!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det!  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,1) | /chanserv kick $chan $1 Ditt nick är opassande för ScoutLink. Vill du vänlien byta det!  ( %sluttekstsveb )
+  ..OtherReason:/ban -u600 $chan $address($1,1) | /set %aarsak $$?="Grunn for kickban (10 min):" | /chanserv kick $chan $1 %aarsak  ( %sluttekstenb )
+
+  .KickBan (*!*@host)
+  ..Swearing
+  ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Det er ikke tilladt at bande på Scoutlink!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 No swearing allowed here at scoutlink!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ufint språk aksepteres ikke i kanalen  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Svära är ej tillåtet på Scoutlink  ( %sluttekstsveb )
+
+  ..Flooding
+  ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Det er ikke tillad at floode (sige det samme igen og igen)!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Please don't flood the channel with rubbish.  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ikke flood kanalen  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Översämma inte kanalen med skit (bara strunt prat)  ( %sluttekstsveb )
+
+  ..CapsLock
+  ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Brug ikke store bogstaver! - det er som at RÅBE!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Don't use capital letters! -  it's considered as SHOUTING!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ikke bruk store bokstaver! Det regnes som ROPING!  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Använd inte stora bokstäver det anses som att skrika  ( %sluttekstsveb )
+
+  ..Dating
+  ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Scoutlink er en spejder chat - IKKE et sted til at finde en ny kæreste.  ( %sluttekstdk )
+  ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Scoutlink is scout chat - NOT a dating service.  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 ScoutLink er en speiderchat - IKKE et sted for å finne ny kjæreste  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Scoutlink är en scout chat inte ett ställe att "datea" på!  ( %sluttekstsveb )
+
+  ..BadNick
+  ...Dansk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Dit nick er upassende. Venligst skift det!  ( %sluttekstdkb )
+  ...Engelsk:/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Your nick is improper for ScoutLink. Please change it!  ( %sluttekstenb )
+  ...Norsk  :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ditt nick er upassende. Vennligst skift det!  ( %sluttekstnob )
+  ...Svensk :/ban -u600 $chan $address($1,7) | /chanserv kick $chan $1 Ditt nick är opassande för ScoutLink. Vill du vänlien byta det!  ( %sluttekstsveb )
+  .OtherReason:/ban -u600 $chan $address($1,7) | /set %aarsak $$?="Grunn for kickban 10 min" | /chanserv kick $chan $1 %aarsak  ( %sluttekstenb )
+}
+menu nicklist {
+  Sett slutttekst
+  .Sett slutteskst til standard:/set %sluttekstdkk > Læs vores regler på www.scoutlink.net/regler  | /set %sluttekstdkb For mere information, se www.scoutlink.net/banned | /set %sluttekstnok Les våre regler på www.scoutlink.net/regler | /set %sluttekstnob For mere informasjon, se www.scoutlink.net/banned | /set %sluttekstsvek läs reglerna på www.scoutlink.net/regler | /set %sluttekstsveb för mer information se www.scoutlink.net/banned | /set %sluttekstenk Read our rules at www.scoutlink.net/rules | /set %sluttekstenb For more information go to www.scoutlink.net/banned
+  .Sluttekst Dansk
+  ..Sett slutttekst Dk kick/advarsel:/set %sluttekstdkk $$?="Sett inn teksten som skal være på slutten av kick/advarsel meldingen"
+  ..Sett slutttekst Dk ban:/set %sluttekstdkb $$?="Sett inn teksten som skal være på slutten av ban meldingen"
+  .Sluttekst Norsk
+  ..Sett slutttekst No kick/advarsel:/set %sluttekstnok $$?="Sett inn teksten som skal være på slutten av kick/advarsel meldingen"
+  ..Sett slutttekst No ban:/set %sluttekstnob $$?="Sett inn teksten som skal være på slutten av ban meldingen"
+  .Slutttekst Svensk
+  ..Sett slutttekst Sve kick/advarsel:/set %sluttekstsvek $$?="Sett inn teksten som skal være på slutten av kick/advarsel meldingen"
+  ..Sett slutttekst Sve ban:/set %sluttekstsveb $$?="Sett inn teksten som skal være på slutten av ban meldingen"
+  .Sluttekst Engelsk
+  ..Sett slutttekst En kick/advarsel:/set %sluttekstenk $$?="Sett inn teksten som skal være på slutten av kick/advarsel meldingen"
+  ..Sett slutttekst En ban:/set %sluttekstenb $$?="Sett inn teksten som skal være på slutten av ban meldingen"
+}
