@@ -1,0 +1,354 @@
+alias opconsole {
+  if ($dialog(oc) == oc ) { dialog -v oc oc }
+  else { dialog -m oc oc }
+  if (#scandinavia* iswm $chan || #norsk* iswm $chan || #dansk* iswm $chan || #svenska* iswm $chan) {
+    did -fu oc 200
+  }
+  else { did -fu oc 300 }
+}
+ 
+ 
+alias F3 opconsole
+menu nicklist,channel {
+  Op-console: opconsole
+}
+ 
+ 
+dialog oc {
+  title "Op-console"
+  size -1 -1 350 310
+ 
+ 
+  tab "Norsk",                200, 5 30 310 285
+  tab "English",              300,
+  tab "Språk",                500,
+ 
+ 
+  text "Channel:",            060, 5 8 80 20  
+  edit "",                    061, 80 5 90 20, autohs
+  text "Nick:",               062, 185 8 50 20
+  edit "",                    063, 230 5 100 20, autohs
+ 
+ 
+  ;Tab 200
+ 
+  button "Språk",             202, 13 70 125 20, tab200
+  button "Idling",            203, 13 95 125 20, tab200
+  button "Bytte nick",        204, 13 120 125 20, tab200
+  button "Personlig Info",    205, 13 145 125 20, tab200
+  button "PM",                206, 13 170 125 20, tab200
+  button "Regler",            207, 13 195 125 20, tab200
+  button "Webchatbrukere",    208, 13 220 125 20, tab200
+  button "Flooding",          209, 13 245 125 20, tab200
+  button "Banning",           210, 13 270 125 20, tab200
+ 
+  button "Kick",              222, 143 70 50 20, tab200
+  button "Kick",              223, 143 95 50 20, tab200
+  button "Bytt",              224, 143 120 50 20, tab200
+  button "Kick",              225, 143 145 50 20, tab200
+  button "Kick",              226, 143 170 50 20, tab200
+  button "Kick",              229, 143 245 50 20, tab200
+  button "Kick",              230, 143 270 50 20, tab200 
+ 
+  ;Tab 300
+ 
+  button "Language",          302, 13 70 125 20, tab300
+  button "Idling",            303, 13 95 125 20, tab300
+  button "Change nick",       304, 13 120 125 20, tab300
+  button "Personal Info",     305, 13 145 125 20, tab300
+  button "Private Message",   306, 13 170 125 20, tab300
+  button "Rules",             307, 13 195 125 20, tab300
+  button "Webchat users" ,    308, 13 220 125 20, tab300
+  button "Flooding",          309, 13 245 125 20, tab300
+  button "Swearing",          310, 13 270 125 20, tab300
+ 
+  button "Kick",              322, 143 70 50 20, tab300
+  button "Kick",              323, 143 95 50 20, tab300
+  button "Change",            324, 143 120 50 20, tab300
+  button "Kick",              325, 143 145 50 20, tab300
+  button "Kick",              326, 143 170 50 20, tab300
+  button "Kick",              329, 143 245 50 20, tab300
+  button "Kick",              330, 143 270 50 20, tab300 
+ 
+ 
+  button "Spanish",           512, 13 70 90 20, tab500
+  button "French",            513, 13 95 90 20, tab500
+  button "German",            514, 13 120 90 20, tab500
+  button "Portuguese",        515, 13 145 90 20, tab500
+  button "Italian",           516, 13 170 90 20, tab500
+  button "Norwegian",         517, 13 195 90 20, tab500
+  button "Swedish",           518, 13 220 90 20, tab500
+  button "Chinese",           519, 13 245 90 20, tab500
+  button "Dutch",             520, 13 270 90 20, tab500
+ 
+  box "IRCop",                400, 200 45 210 260,
+  button "Nick",              412, 205 70 100 20,
+  button "Kick",              401, 205 95 100 20,
+  button "Ban",               402, 205 120 45 20,
+  button "Tban",              414, 255 120 45 20,
+  button "Kill",              403, 205 145 100 20,
+  button "Gline",             404, 205 170 100 20,
+  box "Duration:",            405, 205 195 100 110,
+  radio "5m",                 406, 210 220 50 20, group
+  radio "30m",                407, 210 240 50 20, 
+  radio "1h",                 408, 210 260 50 20, 
+  radio "5h",                 409, 260 220 50 20, 
+  radio "1d",                 410, 260 240 50 20, 
+  radio "3d",                 411, 260 260 50 20, 
+  button "Other",             413, 210 280 90 20,
+ 
+}
+ 
+;Actions
+on *:dialog:oc:init:0: {
+  .timersnick 0 0 if ($active ischan) && ($snick($active,1)) && ($dialog(oc)) //did -ra $!ifmatch 063 $!snick($active,1)
+  did -o oc 061 1 $active
+  did -c oc 407
+  set %duration 30m
+}
+ 
+on *:dialog:oc:close:0: {
+  .timersnick off
+}
+ 
+on *:dialog:oc:sclick:406,407,408,409,410,411:{ 
+  $iif($did($did).state,set %duration $did($did)) 
+}
+ 
+on *:dialog:oc:sclick:431,432,433,434:{ 
+  $iif($did($did).state,set %reason $did($did)) 
+}
+ 
+on 1:ACTIVE:#: {
+  if ($dialog(oc) == oc) {
+    did -o oc 061 1 $chan
+    if (#scandinavia* iswm $chan || #scanops iswm $chan || #norsk* iswm $chan || #dansk* iswm $chan || #svenska* iswm $chan) {
+      did -fu oc 200
+    }
+    else { did -fu oc 300 }
+  }
+}
+ 
+on *:DIALOG:oc:sclick:*: {
+ 
+  ;felles
+ 
+  if ($did == 212) { /msg $did(061).text Por favor, si quieren hablar en espanol, se pone /part $did(061).text y /join #espanol. }
+  if ($did == 213) { /msg $did(061).text Pour communiquer en français, veuillez s'il vous plaît tapez /join #francais et /part $did(061).text pour utiliser le canal #francais. Merci! }
+  if ($did == 214) { /msg $did(061).text Wenn du deutsch sprechen möchtest, bitte /part $did(061).text und /join #deutsch }
+  if ($did == 215) { /msg $did(061).text Se você quer falar português, por favor digite /part $did(061).text e /join #portuguese }
+  if ($did == 216) { /msg $did(061).text Per favore se vuoi parlare italiano, por favore /part $did(061).text ed /join #italiano }
+  if ($did == 217) { /msg $did(061).text Hvis du vil skrive på norsk, vennligst skriv /part $did(061).text og /join #scandinavia }
+  if ($did == 218) { /msg $did(061).text Om du vill prata svenska, lämna $did(061).text och anslut till #scandinavia }
+  if ($did == 219) { /msg $did(061).text Ruguo ni yao shuo zhongwen, qing ni likai $did(061).text $+ , lanhou zai jinru #chinese }
+  if ($did == 220) { /msg $did(061).text Als je nederlands wilt praten /part $did(061).text en /join #dutch }
+ 
+ 
+  ;tab200
+  if ($did == 202) { /msg $did(061).text $did(063).text $+ : $did(061).text is an Scandinavian languages only channel. Please speak only scandinavian here or join the appropriate language channel. }
+  if ($did == 203) { /msg $did(061).text $did(063).text $+ : Vennligst ikke heng i kanalene uten å prate i mer enn 30 minutter. }
+  if ($did == 204) { /msg $did(061).text $did(063).text $+ : Hvis du vil endre kallenavnet ditt, skriv /nick <nytt nick> }
+  if ($did == 205) { /msg $did(061).text $did(063).text $+ : For din egen sikkerhet, ikke gi ut eller be om personlig info, som epostadresse, telefonnummer eller fullt navn i kanalene.  }
+  if ($did == 206) { /msg $did(061).text $did(063).text $+ : Det er ikke alle som liker å prate privat. Snakk gjerne i kanalene i steden - og spør før du sender private meldinger til noen. }
+  if ($did == 207) { /msg $did(061).text $did(063).text $+ : Les gjerne reglene våre på https://www.scoutlink.net/rules/ }
+  if ($did == 208) { /msg $did(061).text $did(063).text $+ : Webchatbrukere: Vil du bytte nick? Skriv inn /nick <nytt nick> }
+  if ($did == 209) { /msg $did(061).text $did(oc,063).text $+ , Vennligst ikke skriv tull (spam) eller mange gjentakelser etter hverandre (flood). Se www.scoutlink.net/rules! }
+  if ($did == 210) { /msg $did(061).text $did(oc,063).text $+ , Vennligst ikke bann i $did(061).text $+ . }
+ 
+  if ($did == 222) { /kick $did(061).text $did(063).text is an Scandinavian languages only channel. Please speak only scandinavian here or join the appropriate language channel. }
+  if ($did == 223) { /kick $did(061).text $did(063).text Vennligst ikke heng i $did(063).text uten å prate i mer enn 30 minutter. }
+  if ($did == 224) { sanick $did(063).text $$?="Endre $did(063).text sitt nick til:" }
+  if ($did == 225) { /kick $did(061).text $did(063).text For din egen sikkerhet, ikke gi ut personlig info, som epostadresse, telefonnummer eller fullt navn i kanalene. }
+  if ($did == 226) { /kick $did(061).text $did(063).text Det er ikke alle som liker å prate privat. Snakk gjerne i kanalene i steden - og spør før du sender private meldinger til noen.  }
+  if ($did == 229) { /kick $did(061).text $did(063).text Vennligst ikke skriv tull (spam) eller mange gjentakelser etter hverandre (flood). Se www.scoutlink.net/rules! }
+  if ($did == 230) { /kick $did(061).text $did(063).text Vennligst ikke bann i $did(061).text $+ . } 
+ 
+ 
+  ;tab300
+  if ($did == 302) { /msg $did(061).text $did(063).text $+ : $did(061).text is an English only channel. Please speak only english here or join the appropriate language channel. }
+  if ($did == 303) { /msg $did(061).text $did(063).text $+ : Idling! You may not idle in this channel for more than 30 mins }
+  if ($did == 304) { /msg $did(061).text $did(063).text $+ : If you want to change your nickname, type /nick NEWNICK Hint replace the caps with your new nickname! }
+  if ($did == 305) { /msg $did(061).text $did(063).text $+ : For your own safety, please DO NOT give out or ask for email addresses, ICQ numbers or other personal information in a channel. }
+  if ($did == 306) { /msg $did(061).text $did(063).text $+ : I prefer to chat in the channels, instead of private messages =) }
+  if ($did == 307) { /msg $did(061).text $did(063).text $+ : Rules to the channels to include - no swearing in any language, no flooding, scout/guide laws are laws of the channels and the that the general rules of Scoutlink are observed. https://www.scoutlink.net/rules/ }
+  if ($did == 308) { /msg $did(061).text $did(063).text $+ : Webchat Users: Want to change your nick from Guest####?? Type: /nick newnick Hint: Replace newnick with the nickname you wish to use. }
+  if ($did == 309) { /msg $did(061).text $did(063).text $+ : Please stop flooding $did(061).text $+ . }
+  if ($did == 310) { /msg $did(061).text $did(063).text $+ , Please stop swearing in $did(061).text $+ . }
+ 
+  if ($did == 322) { /kick $did(061).text $did(063).text $did(061).text is an English only channel. Please speak only english here or join the appropriate language channel. }
+  if ($did == 323) { /kick $did(061).text $did(063).text Idling! You may not idle in this channel for more than 15 mins }
+  if ($did == 324) { sanick $did(063).text $$?="Change $did(063).text $+ 's nick to:" }
+  if ($did == 325) { /kick $did(061).text $did(063).text For your own safety, please DO NOT give out email addresses, ICQ numbers or other personal information in a channel. }
+  if ($did == 326) { /kick $did(061).text $did(063).text Please do not private message ops when you can chat with us all on this channel. }
+  if ($did == 329) { /kick $did(061).text $did(063).text $did(oc,063).text $+ , Please stop flooding $did(061).text $+ . }
+  if ($did == 330) { /kick $did(061).text $did(063).text $did(oc,063).text $+, Please stop swearing in $did(061).text $+ . }
+ 
+  ;IRCop
+  if ($did == 412) { sanick $did(063).text $$?="Change $did(063).text $+ 's nick to:" }
+  if ($did == 401) { kick $did(061).text $did(063).text $$?="Kick $did(063).text from $did(061).text for:" }
+  if ($did == 402) { ban $did(061).text $did(063).text 1 }
+  if ($did == 414) { tban $did(061).text %duration $address($did(063).text, 1) } 
+  if ($did == 403) { kill $did(063).text Tilbakevendende dårlig oppførsel med flere regelbrudd / Recurring bad behaviour, unsuitable for a scouting network. http://scoutlink.net/rules }
+  if ($did == 404) { gline $did(063).text %duration : $+ Tilbakevendende dårlig oppførsel med flere regelbrudd / Recurring bad behaviour, unsuitable for a scouting network. See www.scoutlink.net/banned for information and appeals. Banned by $me for %duration $+ . }
+  if ($did == 413) { set %duration $$?="Duration for gline:" | did -o oc 404 1 Gline %duration}
+ 
+  }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+menu status,menubar {
+  $iif(%chanservfilter,$style(1)) Chanserv notice window ( $+ $iif(%chanservfilter,On,Off) $+ ) {
+    if (%chanservfilter) { unset %chanservfilter | .disable #chanservfilter | echo -a $timestamp 2,15Chanserv notice window 4DISABLED }
+    else { set %chanservfilter ON | .enable #chanservfilter | echo -a $timestamp 2,15Chanserv notice window 3ENABLED }
+  }
+  $iif(%idlekickhider,$style(1)) Hide idle kicks ( $+ $iif(%idlekickhider,On,Off) $+ ) {
+    if (%idlekickhider) { unset %idlekickhider | .disable #idlekickhider | echo -a $timestamp 2,15Hide idle kicks 4DISABLED }
+    else { set %idlekickhider ON | .enable #idlekickhider | echo -a $timestamp 2,15Hide idle kicks 3ENABLED }
+  } 
+  $iif(%autoreply,$style(1)) Automatic reply to private messages ( $+ $iif(%autoreply,On,Off) $+ ) {
+    if (%autoreply) { unset %autoreply | .disable #autoreply | echo -a $timestamp 2,15Autoreply to private messages 4DISABLED }
+    else { set %autoreply ON | .enable #autoreply | echo -a $timestamp 2,15Autoreply to private messages 3ENABLED }
+  } 
+  $iif(%samovefilter ,$style(1)) Remove bot SAMOVE/SAJOIN snotices ( $+ $iif(%samovefilter ,On,Off) $+ ) {
+    if (%samovefilter ) { unset %samovefilter | .disable #samovefilter | echo -a $timestamp 2,15Hide bot SAMOVE/SAJOIN server notices 4DISABLED }
+    else { set %samovefilter ON | .enable #samovefilter | echo -a $timestamp 2,15Hide bot SAMOVE/SAJOIN server notices 3ENABLED }
+  }
+  $iif(%unofilter ,$style(1)) Catch uno deck to separate window ( $+ $iif(%unofilter,On,Off) $+ ) {
+    if (%unofilter ) { unset %unofilter| .disable #unofilter| echo -a $timestamp 2,15Catch uno deck to separate window 4DISABLED }
+    else { set %unofilter ON| .enable #unofilter| echo -a $timestamp 2,15Catch uno deck to separate window 3ENABLED }
+  }   
+}
+ 
+ 
+#autoreply on
+On *:Open:?:*: {
+  if ($nick != *status && $nick !ison #opers && $nick !ison #scanops && $nick !ison #techteam && $nick !ison #theteam && $nick !ison #botteam) {
+    .msg $nick Hello $nick $+ !
+    .msg $nick I am currently busy and may not reply
+    .msg $nick For urgent help please ask in channel or in #help
+    .msg $nick To join #help use /join #help
+    .msg $nick If you just want to chat, I prefer to do that in a channel where everyone can participate =)
+    .msg $nick This is an automated message, you do not have to reply.
+    echo $nick $timestamp 4,15User notified about private chat.
+  }
+}
+#autoreply end
+ 
+#idlekickhider on
+on ^1:PART:#: {
+  if (idle isin $1-) { haltdef }
+  if (inaktiv isin $1-) { haltdef }
+}
+#idlekickhider end
+ 
+#chanservfilter on
+on ^*:NOTICE:*:?: { 
+  if ($nick == ChanServ) {
+    if ($window(@Chanserv) != $null) { echo @Chanserv 5 $timestamp < $+ $nick  $+ > $1- | haltdef } 
+    else { window -nke @Chanserv -1 -1 1000 600 /chanserv | titlebar @Chanserv -  Notices | echo @Chanserv 5 $timestamp < $+ $nick  $+ > $1- | haltdef }
+  }
+}
+#chanservfilter end
+ 
+ 
+#unofilter off
+on *:NOTICE:*:?: { 
+  if (*bot* iswm $nick && *uno* iswm $nick) {
+    if ($window(@Unodeck) != $null) { echo @Unodeck 5 $timestamp < $+ $nick  $+ > $1- | haltdef } 
+    else { window -nk @Unodeck -1 -1 1000 600  | titlebar @Unodeck | echo @Unodeck 5 $timestamp < $+ $nick  $+ > $1- | haltdef }
+  }
+}
+#unofilter end
+ 
+#samovefilter on
+on ^*:SNOTICE:*bot*SAMOVE*: { haltdef }
+on ^*:SNOTICE:*bot*SAPART*: { haltdef }
+on ^*:SNOTICE:*bot*SAJOIN*: { haltdef }
+#samovefilter end
+ 
+ 
+ 
+ 
+menu nicklist {
+  -
+  ; IRC-UK opped
+  $iif(o isin $usermode && $me isop $chan, @Ircop ( $1 ))
+  Check:/check $mask($$1,2)
+  Join:/sajoin $* $$?="Move to:"
+  Part:/sapart $* # Moved by $me
+  Aktiviser
+  .Aktivitet:/say $* , hva synes du er den aller artigste speideraktiviteten?
+  .Tur:/say $* , når var du sist på speidertur? :)
+  .Mat:/say $* , hva er din favorittmat?
+  .Turmat:/say $* , hva er det beste du har smakt som du har laget på bål?
+  .Merke:/say $* , hvilket aktivitetsmerke er ditt favorittmerke?
+  .Lek:/say $* , hvilken lek er din favorittlek i speideren?
+  .Jobb:/say $* , hva har du lyst å jobbe med når du blir stor?
+  .Leir:/say $* , har du vært på noen speiderleirer? Hva er det beste med å være på leir?
+  Engage
+  .Activity:/say $* , what is your favourite Scouting activity? Mines are camp fire and geocaching!
+  .Camping:/say $* , when did you last go camping? :)
+  .Food:/say $* , what is your favourite food?
+  .Badge:/say $* , what is your favourite Scout badge? Mine is campfire cooking
+  .Games:/say $* , what is your favourite game to play at Scouts?
+  .Job:/say $* , what job do you want to do when you're older?
+ 
+ 
+  Swear
+  .UK Warn:/say $* - Please avoid using offensive language and/or swearing while on ScoutLink. See www.scoutlink.net/rules!
+  .NO Warn:/say $* - Vennligst ikke bruk aggresivt, ufint eller stygt språk. Banning er heller ikke tillatt på ScoutLink. Se www.scoutlink.net/rules!
+  .UK Kick:/kick # $* Offensive language and/or swearing. See www.scoutlink.net/rules
+  .NO Kick:/kick # $* Stygt språk og/eller banning. Se www.scoutlink.net/rules
+  .UK Kill:/kill  $* Offensive language and/or swearing. See www.scoutlink.net/rules
+  .NO Kill:/kill  $* Stygt språk og/eller banning. Se www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d :Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" Offensive language and/or swearing. See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+  Flood
+  .UK Warn:/say $* - Please avoid flooding/spamming the channel. See www.scoutlink.net/rules
+  .NO Warn:/say $* - Vennligst ikke skriv tull (spam) eller mange gjentakelser etter hverandre (flood). Se www.scoutlink.net/rules!
+  .Kick:/kick # $* Flooding/Spamming. See www.scoutlink.net/rules
+  .Kill:/kill $* Flooding/Spamming. See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d : Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" :Flooding/Spamming. See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+  Personal Info
+  .UK Warn:/say $* - Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school). See www.scoutlink.net/rules
+  .NO Warn:/say $* - Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, instagram, snapchat, skype og så videre). Se www.scoutlink.net/rules
+  .UK Kick:/kick # $* Please avoid sharing or asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school). See www.scoutlink.net/rules
+  .NO Kick:/kick # $* Unngå å del eller spør etter personlig informasjon (Eks.: etternavn, epostadresse, eller sosiale medier som Facebook, instagram, snapchat, skype og så videre). Se www.scoutlink.net/rules
+  .Kill:/kill $* Sharing/asking for personal information (e.g. email address, full name, Facebook, instagram, skype, school) See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m :Sharing/asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m :Sharing/asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d :Sharing/asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+  .Gline ?:/gline $$snick(#,1) $$?="Please choose a duration" :Sharing/asking for personal information (e.g. email address, full name, Facebook, instagram, snapchat, skype, school) See www.scoutlink.net/banned for information and appeals. Banned by $me for $!
+  Other
+  .Warn:/say $* - $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Kick:/kick # $* $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Kill:/kill # $* $$?="Please enter a reason" See www.scoutlink.net/rules
+  .Gline 5m:/gline $$snick(#,1) 5m : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 5 minutes.
+  .Gline 15m:/gline $$snick(#,1) 15m : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 15 minutes.
+  .Gline 1d:/gline $$snick(#,1) 1d : $$?="Please enter a reason". See www.scoutlink.net/banned for information and appeals. Banned by $me for 1 day.
+ 
+  Language
+  .UK Warn:/say $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. Type /list to see alternatives.
+  .NO Warn:/say $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+  .UK Kick:/kick # $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. 
+  .NO Kick:/kick # $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+  .UK Kill:/kill  $* - This is an ENGLISH ONLY channel. Please speak english or find another channel. 
+  .NO Kill:/kill  $* - This is an SCANDIAVIAN LANGUAGE ONLY channel. Please join #english if you want to speak english. Type /list to see alternatives.
+  JID
+  .UK Warn:/say $* - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.world-jotajoti.info/jampuz/
+  .NO Warn:/say $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.world-jotajoti.info/jampuz/
+  .UK Kick:/kick # $* - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.world-jotajoti.info/jampuz/   
+  .NO Kick:/kick # $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.world-jotajoti.info/jampuz/
+  .UK Kill:/kill  $*  - PLEASE DO NOT JUST ASK/SHARE JID-CODES! JamPuz is about conversation; not simply contacts. Read this before asking for JIDs: www.world-jotajoti.info/jampuz/
+  .NO Kill:/kill  $* - Vær så snill og ikke bare spør/del JID-koder! JamPuz handler om å bli kjent, ikke bare samle koder. Les dette for mer informasjon om spillet: www.world-jotajoti.info/jampuz/
+}
+ 
